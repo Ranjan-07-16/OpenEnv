@@ -1,0 +1,38 @@
+version: "1.0.0"
+name: "GridDispatch"
+description: "Real-world power grid balancing simulation with carbon constraints."
+author: "Gemini-AI-Collaborator"
+license: "MIT"
+
+# This matches your models.py Observation class
+spaces:
+  observation:
+    type: "dict"
+    schema:
+      current_load: "float32"
+      solar_gen: "float32"
+      gas_gen: "float32"
+      grid_stability: "float32"
+      step_count: "int32"
+      
+  # This matches your models.py Action class
+  action:
+    type: "dict"
+    schema:
+      adjust_gas: "float32"   # Range: [-5.0, 5.0]
+      curtail_load: "float32" # Range: [0.0, 2.0]
+
+# These are the 3 tasks for your agent graders
+tasks:
+  - id: "sunny_day_baseline"
+    difficulty: "easy"
+    target_score: 0.9
+    description: "High solar availability; maintain stability with minimal gas."
+  - id: "stormy_night_fluctuation"
+    difficulty: "medium"
+    target_score: 0.8
+    description: "Zero solar and high load variance; prioritize grid health."
+  - id: "carbon_tax_crunch"
+    difficulty: "hard"
+    target_score: 0.7
+    description: "Heavy carbon penalties; agent must use curtailment strategically."

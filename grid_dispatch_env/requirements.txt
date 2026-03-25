@@ -1,0 +1,3 @@
+numpy
+pydantic
+# Add any other libraries you use, e.g., fastapi or uvicorn

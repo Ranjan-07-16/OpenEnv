@@ -1,0 +1,21 @@
+# Use an official Python runtime as a parent image
+FROM python:3.10-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the requirements file first to leverage Docker cache
+# (Ensure you have a requirements.txt file in the same folder)
+COPY requirements.txt .
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of your application code
+COPY . .
+
+# Expose the port (7860 is the default for Hugging Face Spaces)
+EXPOSE 7860
+
+# Run the baseline script or your main application entry point
+CMD ["python", "baseline.py"]
