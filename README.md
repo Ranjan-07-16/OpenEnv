@@ -60,6 +60,12 @@ The environment includes three built-in tasks evaluated by automated graders (Sc
 | `stormy_night_fluctuation` | <kbd>Medium</kbd> | **0.8** | Zero solar + high volatility; tests precision. |
 | `carbon_tax_crunch` | <kbd>Hard</kbd> | **0.7** | High carbon penalties; requires load curtailment. |
 
+> ### 📊 Note on Baseline Scores
+> The provided baseline heuristic achieves a score of **~0.37** on the Easy task and **0.00** on Medium/Hard. This is **by design**:
+> * **Economic Complexity:** In Medium and Hard scenarios, the reward function incorporates heavy carbon taxes and variable operating costs.
+> * **The Optimization Challenge:** A simple proportional-control heuristic (like the one in `baseline.py`) cannot solve the non-linear optimization required to perfectly balance grid stability against high environmental penalties.
+> * **Evaluation Intent:** These tasks are specifically designed to move beyond basic logic and require agents (LLMs or RL) to develop sophisticated, multi-objective strategies.
+
 ---
 
 ## 🚀 Execution & Deployment
