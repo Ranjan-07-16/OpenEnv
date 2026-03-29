@@ -18,7 +18,11 @@ def run_baseline():
             
             # 2. P-Control: React 20% more aggressively to close gaps faster
             # This prevents the initial Stability drop we saw in your logs
-            adj = max(-5.0, min(5.0, diff_mw * 1.2))
+            # If it's the Hard task, be more stingy with Gas to avoid penalties
+            if diff == "hard":
+                adj = max(-5.0, min(5.0, diff_mw * 0.8)) # Slower reaction to save money
+            else:
+                adj = max(-5.0, min(5.0, diff_mw * 1.2))
             
             # 3. Emergency Logic: If stability is failing, shed 1.5MW of load
             # This is a "Smart" move for the Medium/Hard tasks
