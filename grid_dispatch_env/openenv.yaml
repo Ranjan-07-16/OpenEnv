@@ -1,7 +1,7 @@
 version: "1.0.0"
 name: "GridDispatch"
 description: "Real-world power grid balancing simulation with carbon constraints."
-author: "Gemini-AI-Collaborator"
+author: "Kirit Ranjan"
 license: "MIT"
 
 # This matches your models.py Observation class
