@@ -11,6 +11,16 @@
 
 ---
 
+## 🌍 Motivation & Real-World Utility
+Modern power grids are undergoing a radical shift from predictable fossil fuels to volatile renewable sources. As we integrate more solar and wind, the complexity of balancing a grid—where supply must perfectly match demand at every second to avoid catastrophic failure—becomes too fast and multi-faceted for traditional human-operated systems.
+
+**GridDispatch-v1** serves as a critical evaluation environment for AI agents designed to:
+* **Manage High-Frequency Volatility:** Automate the balancing of intermittent solar peaks with "spinning reserves" (gas turbines).
+* **Navigate Policy-Driven Constraints:** Evaluate how agents respond to economic pressures like carbon taxes and load-shedding mandates.
+* **Prevent Infrastructure Failure:** Test the resilience of autonomous systems against "blackout" conditions in a safe, simulated sandbox.
+
+---
+
 ## 📖 Overview
 **GridDispatch-v1** is a high-fidelity environment designed for AI agents to master energy management. Unlike toy environments, this simulates a regional microgrid where an agent balances volatile **Solar Energy** and carbon-heavy **Gas Turbines** to meet urban demand without causing a blackout.
 
@@ -59,3 +69,26 @@ The environment includes three built-in tasks evaluated by automated graders (Sc
 git clone [https://github.com/YOUR_USERNAME/grid_dispatch_env.git](https://github.com/YOUR_USERNAME/grid_dispatch_env.git)
 cd grid_dispatch_env
 pip install -r requirements.txt
+```
+
+### 2. Run Baseline Inference
+Use the baseline script to verify the environment logic and generate reproducible scores:
+
+```bash
+python baseline.py
+```
+
+### 3. Deploy with Docker
+This environment is fully containerized. Use the following commands to build and run locally:
+
+```bash
+# Build the image
+docker build -t grid_dispatch_env .
+
+# Run locally on port 7860
+docker run -p 7860:7860 grid_dispatch_env
+```
+
+<div align="center">
+<sub>Built for the Polaris School of Technology OpenEnv Challenge | 2026</sub>
+</div>
